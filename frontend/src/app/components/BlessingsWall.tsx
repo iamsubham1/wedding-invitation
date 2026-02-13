@@ -15,21 +15,19 @@ export function BlessingsWall() {
 
   const fetchBlessings = async () => {
     try {
-      const response = await fetch("http://localhost:3001/api/blessings");
+      const response = await fetch(
+        "https://wedding-invitation-worker.das1998lipun.workers.dev/api/blessings"
+      );
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const result = await response.json();
+      const result: Blessing[] = await response.json();
       console.log("Fetched blessings:", result);
 
-      if (
-        result.success &&
-        Array.isArray(result.data) &&
-        result.data.length > 0
-      ) {
-        setBlessings(result.data);
+      if (Array.isArray(result)) {
+        setBlessings([...result].reverse());
       }
     } catch (error) {
       console.error("Error fetching blessings:", error);
