@@ -30,12 +30,9 @@ export function BlessingsWall() {
         result.data.length > 0
       ) {
         setBlessings(result.data);
-      } else {
-        console.log("No blessings data received, using sample blessings");
       }
     } catch (error) {
       console.error("Error fetching blessings:", error);
-      console.log("Using sample blessings as fallback");
     }
   };
 

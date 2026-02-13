@@ -9,7 +9,7 @@ import { FamilyDetails } from "@/app/components/FamilyDetails";
 
 export default function App() {
   const [showInvitation, setShowInvitation] = useState(false);
-  const audioRef = useRef(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   // scroll to top
   useEffect(() => {
@@ -25,8 +25,7 @@ export default function App() {
     audioRef.current.volume = 0.6;
     audioRef.current
       .play()
-      .then(() => setIsPlaying(true))
-      .catch(() => setIsPlaying(false));
+      .catch((error: any) => console.error("Audio playback failed:", error));
   }, [showInvitation]);
 
   if (!showInvitation) {
@@ -76,9 +75,7 @@ export default function App() {
     },
   ];
 
-  if (!showInvitation) {
-    return <LandingPage onOpenInvitation={() => setShowInvitation(true)} />;
-  }
+
 
   return (
     <div
