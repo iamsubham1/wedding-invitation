@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import { config, endpoints } from "./config/index.js";
 import { errorHandler, notFound } from "./middleware/errorHandler.js";
-import blessingsRoutes from "../api/routes/blessingsRoutes.js";
+import blessingsRoutes from "./routes/blessingsRoutes.js";
 import { fetchFromGoogleAppsScript } from "./services/blessingsService.js";
 
 const app = express();

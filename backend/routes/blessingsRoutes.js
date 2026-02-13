@@ -2,7 +2,7 @@ import express from "express";
 import {
   getAllBlessings,
   fetchFromGoogleAppsScript,
-} from "../../backend/services/blessingsService.js";
+} from "../services/blessingsService.js";
 
 const router = express.Router();
 
